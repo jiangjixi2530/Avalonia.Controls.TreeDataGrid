@@ -385,8 +385,7 @@ namespace Avalonia.Controls.Selection
         private void PointerSelect(TreeDataGrid sender, TreeDataGridRow row, PointerEventArgs e)
         {
             var point = e.GetCurrentPoint(sender);
-
-            var commandModifiers = TopLevel.GetTopLevel(sender)?.PlatformSettings?.HotkeyConfiguration.CommandModifiers;
+            var commandModifiers = Avalonia.VisualTree.VisualExtensions.GetPlatformSettings(sender)?.HotkeyConfiguration.CommandModifiers;
             var toggleModifier = commandModifiers is not null && e.KeyModifiers.HasFlag(commandModifiers);
             var isRightButton = point.Properties.PointerUpdateKind is PointerUpdateKind.RightButtonPressed or
                 PointerUpdateKind.RightButtonReleased;

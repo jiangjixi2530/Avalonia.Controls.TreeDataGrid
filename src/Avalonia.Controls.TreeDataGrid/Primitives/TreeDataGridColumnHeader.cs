@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Avalonia.Controls.Models.TreeDataGrid;
 using Avalonia.Input;
-using Avalonia.Utilities;
+using Avalonia.Controls.Utils;
 
 namespace Avalonia.Controls.Primitives
 {

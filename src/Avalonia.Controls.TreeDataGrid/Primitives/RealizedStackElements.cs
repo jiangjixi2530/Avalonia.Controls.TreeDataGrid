@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Avalonia.Controls.Models.TreeDataGrid;
-using Avalonia.Utilities;
+using Avalonia.Controls.Utils;
 
 namespace Avalonia.Controls.Primitives
 {

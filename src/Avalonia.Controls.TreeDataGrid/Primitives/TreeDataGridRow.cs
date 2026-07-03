@@ -40,6 +40,7 @@ namespace Avalonia.Controls.Primitives
         private bool _isSelected;
         private IRows? _rows;
         private Point _mouseDownPosition = s_InvalidPoint;
+        private PointerPressedEventArgs? _pressedEventArgs;
         private TreeDataGrid? _treeDataGrid;
 
         public IColumns? Columns
@@ -145,6 +146,7 @@ namespace Avalonia.Controls.Primitives
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
+            _pressedEventArgs = e;
             _mouseDownPosition = !e.Handled ? e.GetPosition(this) : s_InvalidPoint;
         }
 
@@ -170,21 +172,31 @@ namespace Avalonia.Controls.Primitives
 
             _mouseDownPosition = s_InvalidPoint;
 
+            // DoDragDropAsync requires the original PointerPressedEventArgs, which
+            // was captured in OnPointerPressed. Consume it once the drag starts.
+            var trigger = _pressedEventArgs;
+            _pressedEventArgs = null;
+
+            if (trigger is null)
+                return;
+
             var presenter = Parent as TreeDataGridRowsPresenter;
             var owner = presenter?.TemplatedParent as TreeDataGrid;
-            owner?.RaiseRowDragStarted(e);
+            owner?.RaiseRowDragStarted(trigger);
         }
 
         protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
             base.OnPointerReleased(e);
             _mouseDownPosition = s_InvalidPoint;
+            _pressedEventArgs = null;
         }
 
         protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
         {
             base.OnPointerCaptureLost(e);
             _mouseDownPosition = s_InvalidPoint;
+            _pressedEventArgs = null;
         }
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)

@@ -10,19 +10,19 @@ using Avalonia.Media.Imaging;
 
 namespace TreeDataGridDemo.Models
 {
-    internal class OnThisDay
+    public class OnThisDay
     {
         public OnThisDayEvent[]? Selected { get; set; }
     }
 
-    internal class OnThisDayEvent
+    public class OnThisDayEvent
     {
         public string? Text { get; set; }
         public int Year { get; set; }
         public OnThisDayArticle[]? Pages { get; set; }
     }
 
-    internal class OnThisDayArticle : NotifyingBase
+    public class OnThisDayArticle : NotifyingBase
     {
         private const string UserAgent = @"AvaloniaTreeDataGridSample/1.0 (https://avaloniaui.net; team@avaloniaui.net)";
         private bool _loadedImage;
@@ -69,12 +69,12 @@ namespace TreeDataGridDemo.Models
         }
     }
 
-    internal class OnThisDayTitles
+    public class OnThisDayTitles
     {
         public string? Normalized { get; set; }
     }
 
-    internal class OnThisDayImage
+    public class OnThisDayImage
     {
         public string? Source { get; set; }
         public int Width { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using ClassicDiagnostics.Avalonia;
 
 namespace TreeDataGridDemo
 {
@@ -20,6 +21,7 @@ namespace TreeDataGridDemo
             }
 
             base.OnFrameworkInitializationCompleted();
+            this.AttachDevTools();
         }
     }
 }
