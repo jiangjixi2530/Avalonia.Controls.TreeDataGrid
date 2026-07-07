@@ -13,7 +13,8 @@
   <PropertyGroup>
     <AvaloniaVersion>12.0.4</AvaloniaVersion>
     <AvaloniaSamplesVersion>12.0.4</AvaloniaSamplesVersion>
-    <Version>12.0.4-cbuild20260703</Version>
+    <Version>12.0.0-cbuild20260707</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageOutputPath>$(SolutionDir)Package\</PackageOutputPath>
   </PropertyGroup>
 </Project>
